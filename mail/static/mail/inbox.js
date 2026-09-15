@@ -19,11 +19,11 @@ function compose_email() {
   // get the form html element + add the function to trigger on submission
   const formEl = document.querySelector("#compose-form");
 
-  formEl.addEventListener('submit', (event) => {
+  formEl.addEventListener('submit', async (event) => {
 
     event.preventDefault();
 
-    send_email();
+    await send_email();
 
   });
 
@@ -34,7 +34,7 @@ function compose_email() {
 
 }
 
-const send_email = () => {
+const send_email = async () => {
 
   console.log('init email compose form submission');
 
@@ -46,6 +46,39 @@ const send_email = () => {
 
   console.log("mailContent");
   console.log(mailContent);
+
+  console.log("init database insertion");
+
+  try {
+
+    const response = await fetch('/emails', {
+      method: 'POST',
+      body: JSON.stringify(mailContent),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    const result = await response.json();
+
+    // console.log(result);
+
+    if (result.error) {
+
+      console.error(result.error);
+      return false;
+
+    } else {
+
+      console.log(result.message);
+      return true;
+
+    }
+
+  } catch(err) {
+
+    console.error(err);
+    return false
+
+  }
 
   // Once the email has been sent, load the user’s sent mailbox.
   // load_mailbox('sent');
