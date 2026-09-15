@@ -16,10 +16,26 @@ function compose_email() {
   document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
 
+  // get the form html element + add the function to trigger on submission
+  const formEl = document.querySelector("#compose-form");
+  formEl.addEventListener('submit', (event) => {
+
+    event.preventDefault();
+
+    send_email()
+
+  });
+
   // Clear out composition fields
   document.querySelector('#compose-recipients').value = '';
   document.querySelector('#compose-subject').value = '';
   document.querySelector('#compose-body').value = '';
+
+
+const send_email = () => {
+
+  console.log('init email compose form submission');
+
 }
 
 function load_mailbox(mailbox) {
