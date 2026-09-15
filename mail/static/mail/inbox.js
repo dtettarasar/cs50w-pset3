@@ -38,6 +38,15 @@ const send_email = () => {
 
   console.log('init email compose form submission');
 
+  const mailContent = {
+    "recipients": document.querySelector('#compose-recipients').value,
+    "subject": document.querySelector('#compose-subject').value,
+    "body": document.querySelector('#compose-body').value
+  }
+
+  console.log("mailContent");
+  console.log(mailContent);
+
   // Once the email has been sent, load the user’s sent mailbox.
   // load_mailbox('sent');
 
