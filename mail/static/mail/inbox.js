@@ -18,11 +18,12 @@ function compose_email() {
 
   // get the form html element + add the function to trigger on submission
   const formEl = document.querySelector("#compose-form");
+
   formEl.addEventListener('submit', (event) => {
 
     event.preventDefault();
 
-    send_email()
+    send_email();
 
   });
 
@@ -37,7 +38,8 @@ const send_email = () => {
 
   console.log('init email compose form submission');
 
-
+  // Once the email has been sent, load the user’s sent mailbox.
+  // load_mailbox('sent');
 
 }
 
