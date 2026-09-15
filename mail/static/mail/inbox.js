@@ -90,6 +90,31 @@ const retrieve_mail_data = async (mailbox) => {
   console.log("init retrieve_mail_data func");
   console.log(`mailbox: ${mailbox}`);
 
+  try {
+
+    const response = await fetch(`/emails/${mailbox}`);
+    const result = await response.json();
+
+    if (result.error) {
+
+      console.error(result.error);
+      return false;
+
+    } else {
+
+      console.log(result);
+      return true;
+
+    }
+
+
+  } catch (err) {
+
+    console.error(err);
+    return false;
+
+  }
+
 }
 
 async function load_mailbox(mailbox) {
