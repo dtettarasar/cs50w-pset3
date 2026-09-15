@@ -31,10 +31,13 @@ function compose_email() {
   document.querySelector('#compose-subject').value = '';
   document.querySelector('#compose-body').value = '';
 
+}
 
 const send_email = () => {
 
   console.log('init email compose form submission');
+
+
 
 }
 
