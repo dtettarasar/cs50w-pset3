@@ -28,33 +28,33 @@
                         {% if user.is_authenticated %}
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Inbox</a>
+                                <a  class="nav-link" href="#" id="inbox">Inbox</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Compose</a>
+                                <a class="nav-link" href="#" id="compose">Compose</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Sent</a>
+                                <a class="nav-link" href="#" id="sent">Sent</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Archived</a>
+                                <a class="nav-link" href="#" id="archived">Archived</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Log Out</a>
+                                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
                             </li>
 
                         {% else %}
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Log In</a>
+                                <a class="nav-link" href="{% url 'login' %}">Log In</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Register</a>
+                                <a class="nav-link" href="{% url 'register' %}">Register</a>
                             </li>
                             
                         {% endif %}
@@ -81,5 +81,6 @@
         </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
     </body>
 </html>
