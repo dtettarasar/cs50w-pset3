@@ -9,6 +9,31 @@ ws.onmessage = function(event) {
 
 */
 
+// content for the hero banner, for each views 
+const viewsLabel = {
+
+  "inbox" : {
+    "label": "Inbox",
+    "icon": "bi bi-0-circle",
+  },
+
+  'sent' : {
+    "label": "Sent",
+    "icon": "bi bi-1-circle",
+  },
+
+  'archive' : {
+    "label": "Archived",
+    "icon": "bi bi-2-circle",
+  },
+
+  'compose' : {
+    "label": "Compose",
+    "icon": "bi bi-3-circle",
+  }
+
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -27,6 +52,7 @@ function compose_email() {
   // Show compose view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
+  update_hero_content('compose');
 
   // get the form html element + add the function to trigger on submission
   const formEl = document.querySelector("#compose-form");
@@ -131,8 +157,11 @@ const retrieve_mail_data = async (mailbox) => {
 
 const update_hero_content = (mailbox) => {
 
-  console.log("init update hero content function");
-  console.log("content to use for: " + mailbox);
+  const heroTitleEl = document.querySelector("#hero h2");
+  const iconEl = document.querySelector("#hero i")
+
+  heroTitleEl.innerHTML = viewsLabel[mailbox].label;
+  iconEl.className = viewsLabel[mailbox].icon;
 
 }
 
