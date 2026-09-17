@@ -5,11 +5,8 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/app # monte ici le code 
-      - db_data:/app/db # volume docker séparé pour la DB
+      - .:/app
     environment:
       - DEBUG=True
     command: uv run python manage.py runserver 0.0.0.0:8000
-
-volumes:
-  db_data:
+# section volumes: supprimée

@@ -1,66 +1,55 @@
-# ----- DEVELOPMENT -----
+.PHONY: help dev dev-detach dev-build down down-v reset-db \
+        migrations migrate superuser lock ps logs df clean
 
-dev:
+DB := db.sqlite3
+DJANGO := docker compose exec -T web uv run manage.py
+
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
+	  awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-14s\033[0m %s\n", $$1, $$2}'
+
+dev:        ## Démarrer en foreground (logs inline)
 	docker compose up
 
-dev-detach:
+dev-detach: ## Démarrer en arrière-plan
 	docker compose up -d
 
-dev-build:
+dev-build:  ## Rebuild image + démarrer
 	docker compose up --build
 
-down:
+down:       ## Stopper proprement (garde la BDD)
 	docker compose down
 
-# Stop containers and delete local DB volume
-down-v:
+down-v:     ## Stopper + supprimer les volumes Docker
 	docker compose down -v
 
-# ----- DJANGO MANAGEMENT -----
+reset-db:   ## Repartir d'une base totalement vierge
+	docker compose down
+	rm -f $(DB) $(DB)-journal $(DB)-wal $(DB)-shm
+	docker compose up -d --wait
+	$(DJANGO) migrate
+	@echo "✔ Base recréée de zéro."
 
-migrations:
-	docker compose exec web uv run manage.py makemigrations
+migrations: ## Générer les migrations
+	$(DJANGO) makemigrations
 
-migrate:
-	docker compose exec web uv run manage.py migrate
+migrate:    ## Appliquer les migrations
+	$(DJANGO) migrate
 
-superuser:
-	docker compose exec web uv run manage.py createsuperuser
+superuser:  ## Créer un compte admin
+	$(DJANGO) createsuperuser
 
-# Reset DB volume and re-apply migrations from scratch
-reset-db:
-	docker compose down -v
-	docker compose up -d
-	docker compose exec web uv run manage.py migrate
+lock:       ## Régénérer uv.lock
+	docker compose exec -T web uv lock
 
-lock:
-	docker compose exec web uv lock
-
-# ----- MONITORING & LOGS -----
-
-# List running containers
-ps:
+ps:         ## Conteneurs actifs
 	docker compose ps
 
-# Follow application logs in real-time
-logs:
+logs:       ## Logs en direct
 	docker compose logs -f
 
-# ----- MAINTENANCE & CLEANUP -----
-
-# Show Docker disk usage
-df:
+df:         ## Place prise par Docker
 	docker system df
 
-# Remove stopped containers and dangling images
-clean:
+clean:      ## Ménage léger
 	docker system prune -f
-
-# Deep cleanup: remove unused images, volumes, and build cache
-clean-all:
-	docker system prune -a --volumes -f
-	docker builder prune -a -f
-
-# Clean build cache only
-clean-cache:
-	docker builder prune -a -f
