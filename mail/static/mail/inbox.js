@@ -1,3 +1,15 @@
+/*
+// note : pour le rendu dynamique, permettant de mettre à jour les boites mails sans rechargment de navigateur
+// Dans ton app.js ou inbox.js
+const ws = new WebSocket(`ws://${window.location.host}/ws/inbox/`);
+ws.onmessage = function(event) {
+    const data = JSON.parse(event.data);
+    // Ajouter le nouveau mail au DOM dynamiquement
+};
+
+*/
+
+
 document.addEventListener('DOMContentLoaded', function() {
 
   // Use buttons to toggle between views

@@ -37,7 +37,7 @@ migrate:    ## Appliquer les migrations
 	$(DJANGO) migrate
 
 superuser:  ## Créer un compte admin
-	$(DJANGO) createsuperuser
+	docker compose exec web uv run manage.py createsuperuser
 
 lock:       ## Régénérer uv.lock
 	docker compose exec -T web uv lock

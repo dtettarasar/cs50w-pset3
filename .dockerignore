@@ -7,6 +7,7 @@ __pycache__
 .Python
 *.egg-info/
 .eggs/
+.env
 
 # Base de données (pour la garder hors du build)
 db.sqlite3
@@ -14,11 +15,12 @@ db.sqlite3-journal
 db.sqlite3-wal
 db.sqlite3-shm
 
-# Git
+# Git : ne pas copier l'historique du repo dans l'image.
+README.md
 .git
 .gitignore
 
-# IDE / éditeurs
+# IDE / éditeurs : ne pas polluer l'image avec les configs de ton éditeur (ça ne sert à rien dans le conteneur).
 .vscode/
 .idea/
 *.swp
