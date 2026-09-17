@@ -14,22 +14,22 @@ const viewsLabel = {
 
   "inbox" : {
     "label": "Inbox",
-    "icon": "bi bi-0-circle",
+    "icon": "bi bi-inboxes-fill",
   },
 
   'sent' : {
     "label": "Sent",
-    "icon": "bi bi-1-circle",
+    "icon": "bi bi-send-check-fill",
   },
 
   'archive' : {
     "label": "Archived",
-    "icon": "bi bi-2-circle",
+    "icon": "bi bi-archive-fill",
   },
 
   'compose' : {
     "label": "Compose",
-    "icon": "bi bi-3-circle",
+    "icon": "bi bi-pen-fill",
   }
 
 }
