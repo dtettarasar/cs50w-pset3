@@ -1,4 +1,35 @@
+# Environnement virtuel et caches
 .venv
 __pycache__
 *.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.eggs/
+
+# Base de données (pour la garder hors du build)
 db.sqlite3
+db.sqlite3-journal
+db.sqlite3-wal
+db.sqlite3-shm
+
+# Git
+.git
+.gitignore
+
+# IDE / éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS / macOS
+.DS_Store
+Thumbs.db
+
+# Fichiers de config Docker / Dev (optionnel, mais pratique pour garder l'image propre)
+docker-compose.yml
+Dockerfile
+Makefile
