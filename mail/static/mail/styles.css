@@ -36,3 +36,13 @@ textarea {
   font-size: 4rem;
   color: #fff;
 }
+
+.mailbox-elem-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mailbox-elem-content p {
+  margin: 0 !important;
+}
