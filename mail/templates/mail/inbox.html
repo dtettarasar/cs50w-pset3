@@ -11,7 +11,7 @@
 
             <div class="separator mt-3 mb-3 rounded-3"></div>
 
-            <h2 class="text-white">Inbox</h2>
+            <h2 class="text-white"></h2>
 
         </div>
 
@@ -22,6 +22,41 @@
         <h2>{{ request.user.email }}</h2>
 
         <div id="emails-view">
+
+            <div class="table-responsive">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
         </div>
 
         <div id="compose-view">
