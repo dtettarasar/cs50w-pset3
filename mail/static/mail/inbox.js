@@ -140,8 +140,9 @@ const retrieve_mail_data = async (mailbox) => {
 
     } else {
 
-      console.log(result);
-      return true;
+      //console.log("retrieve_mail_data result:")
+      //console.log(result);
+      return result;
 
     }
 
@@ -179,6 +180,9 @@ async function load_mailbox(mailbox) {
 
   // retrieve data
 
-  await retrieve_mail_data(mailbox);
+  mail_data = await retrieve_mail_data(mailbox);
+
+  console.log("mail data: ");
+  console.log(mail_data);
 
 }
