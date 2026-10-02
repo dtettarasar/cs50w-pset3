@@ -15,19 +15,16 @@ const viewsLabel = {
   "inbox" : {
     "label": "Inbox",
     "icon": "bi bi-inboxes-fill",
-    "mail-table-head": "From",
   },
 
   'sent' : {
     "label": "Sent",
     "icon": "bi bi-send-check-fill",
-    "mail-table-head": "To",
   },
 
   'archive' : {
     "label": "Archived",
     "icon": "bi bi-archive-fill",
-    "mail-table-head": "From",
   },
 
   'compose' : {
@@ -176,6 +173,13 @@ const update_mail_table_head = (mailbox) => {
 
 }
 
+const clear_mail_box = () => {
+
+  const mailBox = document.querySelector("#mailbox-container");
+  mailBox.innerHTML = "";
+
+}
+
 
 async function load_mailbox(mailbox) {
   
@@ -184,7 +188,6 @@ async function load_mailbox(mailbox) {
   document.querySelector('#compose-view').style.display = 'none';
 
   update_hero_content(mailbox);
-  update_mail_table_head(mailbox);
 
   // Show the mailbox name
   //document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
