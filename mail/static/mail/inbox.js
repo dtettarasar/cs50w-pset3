@@ -173,10 +173,10 @@ const update_mail_table_head = (mailbox) => {
 
 }
 
-const clear_mail_box = () => {
+const clear_mail_box_list = () => {
 
-  const mailBox = document.querySelector("#mailbox-container");
-  mailBox.innerHTML = "";
+  const mailBoxList = document.querySelector("#mailbox-list");
+  mailBoxList.innerHTML = "";
 
 }
 
@@ -186,8 +186,17 @@ async function load_mailbox(mailbox) {
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
-
   update_hero_content(mailbox);
+
+
+  // Display the loader and clear the mailbox to refresh the list
+  const loader = document.querySelector("#mailbox-loader");
+
+  clear_mail_box_list();
+
+  loader.style.display = 'block';
+
+  const mailBoxList = document.querySelector("#mailbox-list");
 
   // Show the mailbox name
   //document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
@@ -195,8 +204,14 @@ async function load_mailbox(mailbox) {
   // retrieve data
 
   mail_data = await retrieve_mail_data(mailbox);
+  
+  // After the request from the server is done: remove the loader and display the updated mailbox list
+  console.log(loader);
+  loader.style.display = 'none';
 
   console.log("mail data: ");
   console.log(mail_data);
+
+  mailBoxList.innerHTML = mailbox
 
 }
