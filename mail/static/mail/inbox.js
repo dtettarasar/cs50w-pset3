@@ -181,6 +181,23 @@ const clear_mail_box_list = () => {
 }
 
 
+const buildMailElement = (mailData) => {
+
+  const mailBoxList = document.querySelector("#mailbox-list");
+
+  console.log("init buildMailElement");
+  console.log(mailData);
+
+  const container = document.createElement('div');
+  const mailId = document.createTextNode("hello world");
+
+  container.appendChild(mailId);
+
+  mailBoxList.appendChild(container);
+
+}
+
+
 async function load_mailbox(mailbox) {
   
   // Show the mailbox and hide other views
@@ -203,15 +220,15 @@ async function load_mailbox(mailbox) {
 
   // retrieve data
 
-  mail_data = await retrieve_mail_data(mailbox);
+  mailData = await retrieve_mail_data(mailbox);
   
   // After the request from the server is done: remove the loader and display the updated mailbox list
   console.log(loader);
   loader.style.display = 'none';
 
-  console.log("mail data: ");
-  console.log(mail_data);
+  //mailData.forEach(buildMailElement);
 
-  mailBoxList.innerHTML = mailbox
+
+  //mailBoxList.innerHTML = mailbox
 
 }
