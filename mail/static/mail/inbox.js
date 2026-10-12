@@ -43,17 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#archived').addEventListener('click', async () => load_mailbox('archive'));
   document.querySelector('#compose').addEventListener('click', compose_email);
 
-  // By default, load the inbox
-  load_mailbox('inbox');
-});
-
-function compose_email() {
-
-  // Show compose view and hide other views
-  document.querySelector('#emails-view').style.display = 'none';
-  document.querySelector('#compose-view').style.display = 'block';
-  update_hero_content('compose');
-
   // get the form html element + add the function to trigger on submission
   const formEl = document.querySelector("#compose-form");
 
@@ -64,6 +53,17 @@ function compose_email() {
     await send_email();
 
   });
+
+  // By default, load the inbox
+  load_mailbox('inbox');
+});
+
+function compose_email() {
+
+  // Show compose view and hide other views
+  document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#compose-view').style.display = 'block';
+  update_hero_content('compose');
 
   // Clear out composition fields
   document.querySelector('#compose-recipients').value = '';
