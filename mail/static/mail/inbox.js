@@ -189,9 +189,16 @@ const buildMailElement = (mailData) => {
   console.log(mailData);
 
   const container = document.createElement('div');
-  const mailId = document.createTextNode(mailData["id"]);
+  container.classList.add('card', 'bg-secondary', 'text-white', 'my-2');
 
-  container.appendChild(mailId);
+
+  const body = document.createElement('div');
+  body.classList.add('card-body')
+
+  const mailId = document.createTextNode(mailData["id"]);
+  
+  body.appendChild(mailId);
+  container.appendChild(body)
 
   mailBoxList.appendChild(container);
 
