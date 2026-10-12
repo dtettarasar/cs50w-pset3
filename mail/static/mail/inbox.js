@@ -189,7 +189,7 @@ const buildMailElement = (mailData) => {
   console.log(mailData);
 
   const container = document.createElement('div');
-  const mailId = document.createTextNode("hello world");
+  const mailId = document.createTextNode(mailData);
 
   container.appendChild(mailId);
 
@@ -226,8 +226,18 @@ async function load_mailbox(mailbox) {
   console.log(loader);
   loader.style.display = 'none';
 
-  //mailData.forEach(buildMailElement);
+  // mailData.forEach(buildMailElement);
 
+  console.log(mailBoxList)
+  console.log(mailData);
+
+  for (let i = 0; i < mailData.length; i++) {
+
+    buildMailElement(mailData[i])
+
+  }
+
+  
 
   //mailBoxList.innerHTML = mailbox
 
