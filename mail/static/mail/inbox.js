@@ -189,7 +189,7 @@ const buildMailElement = (mailData) => {
   console.log(mailData);
 
   const container = document.createElement('div');
-  const mailId = document.createTextNode(mailData);
+  const mailId = document.createTextNode(mailData["id"]);
 
   container.appendChild(mailId);
 
